@@ -3,11 +3,11 @@ import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-source = "data/results.csv"
+source = "data/results_mlp.csv"
 df = pd.read_csv(source)
-i = df["i"].tolist()
-j = df["j"].tolist()
-mse = df["mse"].tolist()
+i = df["i"].to_numpy()
+j = df["j"].to_numpy()
+mse = df["mse"].to_numpy()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection=Axes3D.name)
 
@@ -17,8 +17,8 @@ norm = plt.Normalize(min(mse), max(mse))
 colors = cm.viridis(norm(mse))
 
 
-line = ax.plot_trisurf(i, j, mse, cmap='viridis', norm=norm, linewidth=0.2, alpha=0.4)
-
+#line = ax.plot_trisurf(i, j, mse, cmap='viridis', norm=norm, linewidth=0.2, alpha=0.4)
+line = ax.scatter(i, j, mse, c=colors, alpha=0.2, label="3D Curve")
 
 ax.set_xlabel("i")
 ax.set_ylabel("j")
