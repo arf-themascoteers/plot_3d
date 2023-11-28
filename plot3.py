@@ -7,7 +7,7 @@ source = "data/results_mlp.csv"
 df = pd.read_csv(source)
 i = df["i"].to_numpy()
 j = df["j"].to_numpy()
-mse = df["mse"].to_numpy()
+mse = df["score"].to_numpy()
 fig = plt.figure()
 ax = fig.add_subplot(111, projection=Axes3D.name)
 
@@ -22,11 +22,11 @@ line = ax.scatter(i, j, mse, c=colors, alpha=0.2, label="3D Curve")
 
 ax.set_xlabel("i")
 ax.set_ylabel("j")
-ax.set_zlabel("mse")
+ax.set_zlabel("score")
 
 mappable = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
 mappable.set_array(mse)
-cbar = plt.colorbar(mappable, ax=ax, label="MSE")
+cbar = plt.colorbar(mappable, ax=ax, label="Score")
 
 #ax.legend()
 

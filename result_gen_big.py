@@ -9,13 +9,13 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 SMALL = "data/dataset_66_min.csv"
 BIG = "data/dataset.csv"
-SOURCE = SMALL
+SOURCE = BIG
 
 
 def create_table(X,y):
     df = pd.DataFrame(columns=['i', 'j', 'score'])
-    for i in range(X.shape[1]):
-        for j in range(X.shape[1]):
+    for i in range(0,X.shape[1], 10):
+        for j in range(0,X.shape[1],10):
             model = get_model()
             new_X = X[:,[i,j]]
             model.fit(new_X,y)
@@ -26,7 +26,7 @@ def create_table(X,y):
 
 
 def gen_please():
-    data = pd.read_csv(SMALL).to_numpy()
+    data = pd.read_csv(SOURCE).to_numpy()
     for i in range(data.shape[1]):
         scaler = MinMaxScaler()
         x_scaled = scaler.fit_transform(data[:, i].reshape(-1, 1))
@@ -34,7 +34,7 @@ def gen_please():
     X = data[:,:-1]
     y = data[:,-1]
     df = create_table(X, y)
-    df.to_csv("data/results_mlp.csv", index=False)
+    df.to_csv("data/results_mlp_big.csv", index=False)
 
 
 def get_model():
