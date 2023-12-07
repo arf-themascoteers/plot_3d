@@ -3,7 +3,7 @@ import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-source = "data/results_mlp.csv"
+source = "data/results_small_mlp.csv"
 df = pd.read_csv(source)
 i = df["i"].to_numpy()
 j = df["j"].to_numpy()

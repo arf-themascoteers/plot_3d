@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-source = "data/results_mlp.csv"
+source = "data/results_small_mlp.csv"
 df = pd.read_csv(source)
 fig, ax = plt.subplots()
 scatter = ax.scatter(df['i'], df['j'], c=df['score'], cmap='viridis')

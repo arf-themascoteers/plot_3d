@@ -9,21 +9,19 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 SMALL = "data/dataset_66_min.csv"
 BIG = "data/dataset.csv"
-SOURCE = BIG
+SOURCE = SMALL
 
 
 def create_table(X,y):
     df = pd.DataFrame(columns=['i', 'j', 'score'])
-    for i in range(0,1000, 1):
-        for j in range(0,1000,1):
-            if True:#j > i:
-                model = get_model()
-                new_X = X[:,[i,j]]
-                model.fit(new_X,y)
-                score = model.score(new_X,y)
-                df.loc[len(df)] = [round(i),round(j),round(score,3)]
-                print(f"Done {i},{j}")
-        df.to_csv("data/results_mlp_big2.csv", index=False)
+    for i in range(0,X.shape[1], 10):
+        for j in range(0,X.shape[1],10):
+            model = get_model()
+            new_X = X[:,[i,j]]
+            model.fit(new_X,y)
+            score = model.score(new_X,y)
+            df.loc[len(df)] = [round(i),round(j),round(score,3)]
+            print(f"Done {i},{j}")
     return df
 
 
@@ -36,6 +34,7 @@ def gen_please():
     X = data[:,:-1]
     y = data[:,-1]
     df = create_table(X, y)
+    #df.to_csv("data/results_mlp_big.csv", index=False)
 
 
 def get_model():

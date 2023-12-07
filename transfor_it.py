@@ -1,6 +1,6 @@
 import pandas as pd
 
-SMALL = "data/dataset_66_min.csv"
+SMALL = "data/dataset_66.csv"
 BIG = "data/dataset.csv"
 
 
@@ -32,4 +32,4 @@ def transform_big_please():
 
 
 if __name__ == "__main__":
-    transform_big_please()
+    transform_small_please()
