@@ -52,6 +52,6 @@ def get_model():
 
 
 if __name__ == "__main__":
-    #gen_please()
+    gen_please()
     plot_3d(DEST)
     plot_2d(DEST)
