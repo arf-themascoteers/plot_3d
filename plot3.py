@@ -3,8 +3,10 @@ import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-def plot_please(source):
+
+def plot_3d(source):
     df = pd.read_csv(source)
+    df = df[df['i'] < df['j']]
     i = df["i"].to_numpy() + 1
     j = df["j"].to_numpy() + 1
     mse = df["score"].to_numpy()
@@ -52,4 +54,4 @@ def plot_please(source):
 
 
 if __name__ == "__main__":
-    plot_please("data/results_small_mlp.csv")
+    plot_3d("data/results_small_mlp.csv")

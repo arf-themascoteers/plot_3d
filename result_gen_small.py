@@ -2,8 +2,10 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
-from plot3 import plot_please
+from plot3 import plot_3d
+from plot2 import plot_2d
 from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPRegressor
 
 
 SMALL = "data/dataset_66.csv"
@@ -12,19 +14,24 @@ SOURCE = SMALL
 DEST = "data/results_small_lr.csv"
 
 
+def get_score(X_train, y_train, X_test, y_test, i, j):
+    return np.random.rand()
+    model = get_model()
+    new_X = X_train[:, [i, j]]
+    model.fit(new_X, y_train)
+    new_X = X_test[:, [i, j]]
+    score = model.score(new_X, y_test)
+    return score
+
+
 def create_table(X,y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=40)
     df = pd.DataFrame(columns=['i', 'j', 'score'])
     for i in range(X.shape[1]):
         for j in range(X.shape[1]):
-            if j > i:
-                model = get_model()
-                new_X = X_train[:,[i,j]]
-                model.fit(new_X,y_train)
-                new_X = X_test[:,[i,j]]
-                score = model.score(new_X,y_test)
-                df.loc[len(df)] = [round(i),round(j),round(score,3)]
-                print(f"Done {i},{j}")
+            score = get_score(X_train, y_train, X_test, y_test, i, j)
+            df.loc[len(df)] = [round(i),round(j),round(score,3)]
+            print(f"Done {i},{j}")
         df.to_csv(DEST, index=False)
     return df
 
@@ -49,5 +56,6 @@ def get_model():
 
 
 if __name__ == "__main__":
-    gen_please()
-    plot_please(DEST)
+    #gen_please()
+    plot_3d(DEST)
+    plot_2d(DEST)
