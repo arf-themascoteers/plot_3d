@@ -2,14 +2,13 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
-from sklearn.neural_network import MLPRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
+from plot3 import prol_please
 
 
 SMALL = "data/dataset_66.csv"
 BIG = "data/dataset.csv"
 SOURCE = SMALL
+DEST = "data/results_small_lr.csv"
 
 
 def create_table(X,y):
@@ -23,7 +22,7 @@ def create_table(X,y):
                 score = model.score(new_X,y)
                 df.loc[len(df)] = [round(i),round(j),round(score,3)]
                 print(f"Done {i},{j}")
-        df.to_csv("data/results_small_lr.csv", index=False)
+        df.to_csv(DEST, index=False)
     return df
 
 
@@ -45,3 +44,4 @@ def get_model():
 
 if __name__ == "__main__":
     gen_please()
+    prol_please(DEST)
