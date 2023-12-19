@@ -7,15 +7,11 @@ from plot2 import plot_2d
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 
-
-SMALL = "data/dataset_66.csv"
-BIG = "data/dataset.csv"
-SOURCE = SMALL
+SOURCE = "data/dataset_66.csv"
 DEST = "data/results_small_lr.csv"
 
 
 def get_score(X_train, y_train, X_test, y_test, i, j):
-    return np.random.rand()
     model = get_model()
     new_X = X_train[:, [i, j]]
     model.fit(new_X, y_train)
