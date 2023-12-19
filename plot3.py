@@ -3,7 +3,7 @@ import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-def prol_please(source):
+def plot_please(source):
     df = pd.read_csv(source)
     i = df["i"].to_numpy() + 1
     j = df["j"].to_numpy() + 1
@@ -52,4 +52,4 @@ def prol_please(source):
 
 
 if __name__ == "__main__":
-    prol_please("data/results_small_mlp.csv")
+    plot_please("data/results_small_mlp.csv")
