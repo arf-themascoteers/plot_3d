@@ -23,7 +23,7 @@ def create_table(X,y):
                 score = model.score(new_X,y)
                 df.loc[len(df)] = [round(i),round(j),round(score,3)]
                 print(f"Done {i},{j}")
-        df.to_csv("data/results_small_mlp.csv", index=False)
+        df.to_csv("data/results_small_lr.csv", index=False)
     return df
 
 
@@ -39,8 +39,8 @@ def gen_please():
 
 
 def get_model():
-    #return LinearRegression()
-    return MLPRegressor(hidden_layer_sizes=(10,8), random_state=41)
+    return LinearRegression()
+    #return MLPRegressor(hidden_layer_sizes=(10,8), random_state=41)
 
 
 if __name__ == "__main__":
