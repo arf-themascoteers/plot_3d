@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 
 SOURCE = "data/dataset_66.csv"
-DEST = "data/results_small_lr.csv"
+DEST = "data/results_small_mlp.csv"
 
 
 def get_score(X_train, y_train, X_test, y_test, i, j):
@@ -47,11 +47,11 @@ def gen_please():
 
 
 def get_model():
-    return LinearRegression()
-    #return MLPRegressor(hidden_layer_sizes=(10,8), random_state=41)
+    #return LinearRegression()
+    return MLPRegressor(hidden_layer_sizes=(10,8), random_state=41)
 
 
 if __name__ == "__main__":
-    #gen_please()
+    gen_please()
     plot_3d(DEST)
     plot_2d(DEST)
