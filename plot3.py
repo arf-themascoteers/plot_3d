@@ -6,7 +6,7 @@ from matplotlib import cm
 
 def plot_3d(source):
     df = pd.read_csv(source)
-    df = df[df['i'] < df['j']]
+    #df = df[df['i'] < df['j']]
     i = df["i"].to_numpy() + 1
     j = df["j"].to_numpy() + 1
     mse = df["score"].to_numpy()
@@ -50,6 +50,7 @@ def plot_3d(source):
     text = 'Best performance'
     ax.text(highlight_x-20, highlight_y+1, highlight_z, text, color='green', fontsize=FS, ha='left', va='bottom', zorder=10)
     plt.subplots_adjust(bottom=0.3)
+    ax.view_init(elev=20, azim=-150)
     plt.show()
 
 
