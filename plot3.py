@@ -41,16 +41,17 @@ def plot_3d(source):
     cbar.set_label(r"$R^2$", fontsize=FS)
     cbar.ax.tick_params(labelsize=FS)
 
-    highlight_x = 5
-    highlight_y = 15
+    highlight_x = 16
+    highlight_y = 5
     highlight_z = 0.7
     scatter = ax.scatter([highlight_x], [highlight_y], [highlight_z], color='green', s=20, label='Best performance', zorder = 10000)
+    scatter = ax.scatter([highlight_y], [highlight_x], [highlight_z], color='green', s=20, label='Best performance', zorder = 10000)
     #scatter.set_zorder(10)
     #ax.legend()
     text = 'Best performance'
     ax.text(highlight_x-20, highlight_y+1, highlight_z, text, color='green', fontsize=FS, ha='left', va='bottom', zorder=10)
     plt.subplots_adjust(bottom=0.3)
-    ax.view_init(elev=20, azim=-150)
+    ax.view_init(elev=20, azim=45)
     plt.show()
 
 
