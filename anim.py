@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 from matplotlib.animation import FuncAnimation
+from PIL import Image
 matplotlib.use("TkAgg")
 
 res = pd.read_csv("fsdr.csv")
@@ -43,6 +44,9 @@ def update(frame):
         points[index].set_offsets([[val, signal[val]]])
     return points,
 
-ani = FuncAnimation(fig, update, frames=len(res)-1, interval=1)
+#ani = FuncAnimation(fig, update, frames=len(res)-1, interval=100)
 plt.subplots_adjust(top=0.85)
-plt.show()
+ani = FuncAnimation(fig, update, frames=300, interval=100, repeat=False)
+#plt.show(block=False)
+ani.save('animation.gif', writer='pillow', fps=10)
+print("done")
